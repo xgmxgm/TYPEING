@@ -1,0 +1,20 @@
+{
+    "Header" : {
+        "language" : "language"
+    },
+    "welcomeModal" : {
+        "title" : "Enter text to copy.",
+        "placeholder" : "Enter here text...",
+        "buttonText" : "enter"
+    },
+    "main" : {
+        "placeholder" : "Retype text here",
+        "buttonText" : "again"
+    },
+    "finishModal" : {
+        "title" : "Congratulations, you have successfully rewritten the text!",
+        "Time" : "Your Time : ",
+        "sec" : "sec",
+        "WPM" : "Your WPM : "
+    }
+}

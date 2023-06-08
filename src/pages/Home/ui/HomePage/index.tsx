@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 
 import "./HomePage.scss"
 import { Button } from '@/shared/ui/Button';
@@ -67,20 +68,22 @@ export const HomePage: FC = () => {
         }
     })
 
+    const { t } = useTranslation();
+
     return (
         <div className='flex flex-col items-center'>
             {
                 welcomeModal ?
                 <div className="welcome__Modal">
-                    <p>Enter text to copy.</p>
+                    <p>{t("welcomeModal.title")}</p>
                     <textarea
                         className='welcome__text__area'
-                        placeholder='Enter here text...'
+                        placeholder={t("welcomeModal.placeholder") as string}
                         onChange={input}
                     />
                     <Button
                         onClick = {checkInput}                                 
-                    >enter</Button>
+                    >{t("welcomeModal.buttonText")}</Button>
                 </div>
                 :
                 <div></div>
@@ -88,17 +91,17 @@ export const HomePage: FC = () => {
             <textarea readOnly className='text' value={ text.length == 0 ? "Enter please code !!!" : text }></textarea>
             <textarea
                 className={`text__area ${error ? 'text-red-700' : 'text-white'}`}
-                placeholder='Retype text here'
+                placeholder={t("main.placeholder") as string}
                 onChange={output}
                 value={value}
             />
             { time }
-            <Button onClick={() => setWelcomeModal(true)}>again</Button>
+            <Button onClick={() => setWelcomeModal(true)}>{t("main.buttonText")}</Button>
             { finish ? <div className='finishModal'>
-                <h2>Congratulations, you have successfully rewritten the text!</h2>
-                <h2>Your Time : {time} sec</h2>
-                <h2>Your WPM : {Math.round((text.length / 5) / (time / 60 ))}</h2>
-                <Button onClick={again}>again</Button>
+                <h2>{t("finishModal.title")}</h2>
+                <h2>{t("finishModal.Time")} {time} {t("finishModal.sec")}</h2>
+                <h2>{t("finishModal.WPM")} {Math.round((text.length / 5) / (time / 60 ))}</h2>
+                <Button onClick={again}>{t("main.buttonText")}</Button>
             </div> : <div></div> }
         </div>
     )
