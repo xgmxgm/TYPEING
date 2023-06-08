@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/Button';
 import { TranslateButton } from '@/shared/ui/TranslateButton/TranslateButton';
 
 export const DesktopHeader: FC = () => {
-    const [modalActive, setModalActive] = useState<boolean>(false)
+    const [modalActive, setModalActive] = useState<boolean>(false);
 
     const { t, i18n } = useTranslation();
 
