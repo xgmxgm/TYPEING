@@ -1,6 +1,12 @@
-import "./TranslateButton.scss"
+import "./popUp.scss"
 
-export const TranslateButton = (props: any) => {
+interface IProps {
+    active: boolean,
+    setActive: (active: boolean) => void,
+    children: React.ReactNode
+}
+
+export const Modal = (props: IProps) => {
     const { active, setActive, children } = props
 
     return (

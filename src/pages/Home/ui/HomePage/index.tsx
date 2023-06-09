@@ -13,7 +13,7 @@ export const HomePage: FC = () => {
     const [timer, setTimer] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
 
-    const output = (event: any) => {
+    const output = (event: React.ChangeEvent<HTMLInputElement>) => {
         const current_text = event.target.value
 
         if (current_text == text) {
@@ -27,7 +27,7 @@ export const HomePage: FC = () => {
         compareArrays(text, current_text);
     }
 
-    const input = (event: any) => {
+    const input = (event: React.ChangeEvent<HTMLInputElement>) => {
         const current_text: string = event.target.value;
         setText(current_text)
     }
@@ -43,7 +43,6 @@ export const HomePage: FC = () => {
     const compareArrays = (str1: string, str2: string) => {
         for (let item = 0; item < str2.length; item++) {
             if (str1[item] == str2[item]) {
-                setWelcomeModal(false);
                 setError(false);
             } else {
                 setError(true);
@@ -79,7 +78,7 @@ export const HomePage: FC = () => {
                     <textarea
                         className='welcome__text__area'
                         placeholder={t("welcomeModal.placeholder") as string}
-                        onChange={input}
+                        onChange={input as () => void}
                     />
                     <Button
                         onClick = {checkInput}                                 
@@ -92,7 +91,7 @@ export const HomePage: FC = () => {
             <textarea
                 className={`text__area ${error ? 'text-red-700' : 'text-white'}`}
                 placeholder={t("main.placeholder") as string}
-                onChange={output}
+                onChange={output as () => void}
                 value={value}
             />
             { time }
